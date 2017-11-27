@@ -36,6 +36,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(`${__dirname}/views/home.html`));
 });
 
+app.get('/superlight.css', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/views/superlight.css`));
+});
+
 app.get('/assets/:photo', (req, res) => {
   sharp(path.join(`${__dirname}/assets/${req.params.photo}`))
     .resize(parseInt(req.query.w, 10))

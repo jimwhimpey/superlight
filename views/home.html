@@ -1,19 +1,24 @@
 <title>Instalight</title>
+<link rel="stylesheet" href="./superlight.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <h1>Superlight</h1>
+<h2>A photo blog by <a href="http://jimwhimpey.com">Jim Whimpey</a></h2>
 
 <ol class='c-photos'>
 </ol>
 
 <script type="text/javascript">
 
-  const list = document.querySelector('.c-photos');
+  const listNode = document.querySelector('.c-photos');
+  const widthVirtual = window.innerWidth;
+  const widthActual = widthVirtual * Math.min(2, window.devicePixelRatio)
 
   fetch('./photos/1/4').then(response => response.json()).then(function(photos) {
 
     photos.forEach((photo) => {
-      const photoElement = `<li><img src='assets/${photo.path}?w=100' width='300'> ${photo.date} ${photo.title}</li>`;
-      list.insertAdjacentHTML('beforeend', photoElement);
+      const photoNode = `<li><img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}'> ${photo.date} ${photo.title}</li>`;
+      listNode.insertAdjacentHTML('beforeend', photoNode);
     })
 
   });
