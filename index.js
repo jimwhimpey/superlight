@@ -5,7 +5,7 @@ const path = require('path');
 
 app.get('/photos/:page/:perpage', (req, res) => {
 
-  fs.readdir('./photos', function(err, photos) {
+  fs.readdir('./assets', function(err, photos) {
 
     if (err) console.log(err);
     if (!photos) console.log('Empty dir');

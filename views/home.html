@@ -7,9 +7,14 @@
 
 <script type="text/javascript">
 
-  fetch('./photos/1/4').then(response => response.json()).then(function(data) {
+  const list = document.querySelector('.c-photos');
 
-    
+  fetch('./photos/1/4').then(response => response.json()).then(function(photos) {
+
+    photos.forEach((photo) => {
+      const photoElement = `<li><img src='assets/${photo}' width='300'></li>`;
+      list.insertAdjacentHTML('beforeend', photoElement);
+    })
 
   });
 
