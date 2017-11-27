@@ -25,7 +25,11 @@ app.get('/photos/:page/:perpage', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/home.html'));
+  res.sendFile(path.join(`${__dirname}/views/home.html`));
+});
+
+app.get('/assets/:photo', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/assets/${req.params.photo}`));
 });
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
