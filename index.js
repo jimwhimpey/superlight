@@ -21,8 +21,12 @@ app.get('/photos/:page/:perpage', (req, res) => {
     const output = [];
 
     for (var i = firstfile; i < req.params.perpage * req.params.page; i++) {
-      if (!sortedPhotos[i]) continue;
-      output.push(sortedPhotos[i]);
+      if (!sortedPhotos[i] || sortedPhotos[i] === '.DS_Store') continue;
+      output.push({
+        path: sortedPhotos[i],
+        title: sortedPhotos[i].replace(/\.jpg$/, ''),
+        date: fs.statSync(`./assets/${sortedPhotos[i]}`).mtime.getTime()
+      });
     }
 
     res.json(output);
