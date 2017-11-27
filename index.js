@@ -11,22 +11,18 @@ app.get('/photos/:page/:perpage', (req, res) => {
     if (!photos) console.log('Empty dir');
 
     const sortedPhotos = photos.map(photo => ({
-        name: photo,
-        time: fs.statSync(`./assets/${photo}`).mtime.getTime()
+        path: photo,
+        title: photo.replace(/\.jpg$/, ''),
+        date: fs.statSync(`./assets/${photo}`).mtime.getTime()
       }))
-      .sort(function(a, b) { return b.time - a.time; })
-      .map(function(photo) { return photo.name; });
+      .sort(function(a, b) { return b.date - a.date; });
 
     const firstFileIndex = (req.params.page == 1) ? 0 : (req.params.page - 1) * req.params.perpage;
     const output = [];
 
     for (var i = firstFileIndex; i < req.params.perpage * req.params.page; i++) {
-      if (!sortedPhotos[i] || sortedPhotos[i] === '.DS_Store') continue;
-      output.push({
-        path: sortedPhotos[i],
-        title: sortedPhotos[i].replace(/\.jpg$/, ''),
-        date: fs.statSync(`./assets/${sortedPhotos[i]}`).mtime.getTime()
-      });
+      if (!sortedPhotos[i] || sortedPhotos[i].title === '.DS_Store') continue;
+      output.push(sortedPhotos[i]);
     }
 
     res.json(output);
