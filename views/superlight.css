@@ -1,0 +1,24 @@
+/* Reset */
+* {margin:0;padding:0;outline:0;font-size:1em;font-weight:normal;font-style:normal;border:0;text-decoration:none;list-style-type:none}
+
+a {
+  color: inherit;
+}
+
+.c-title {
+  font-family: 'Bungee Shade', Menlo, Monaco, monospace;
+  font-size: 32px;
+  padding: 10px 5px 0 5px;
+  color: #59392c;
+}
+
+.c-blurb {
+  font-family: "Operator Mono", Menlo, Monaco, monospace;
+  font-size: 12px;
+  padding: 0 5px 10px 5px;
+  color: #222;
+}
+
+.c-photos__photo {
+  margin: 0 0 10px 0;
+}

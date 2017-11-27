@@ -1,9 +1,10 @@
 <title>Instalight</title>
+<link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
 <link rel="stylesheet" href="./superlight.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<h1>Superlight</h1>
-<h2>A photo blog by <a href="http://jimwhimpey.com">Jim Whimpey</a></h2>
+<h1 class='c-title'>Superlight</h1>
+<h2 class='c-blurb'>A photo blog by <a href="http://jimwhimpey.com">Jim Whimpey</a></h2>
 
 <ol class='c-photos'>
 </ol>
@@ -17,7 +18,11 @@
   fetch('./photos/1/4').then(response => response.json()).then(function(photos) {
 
     photos.forEach((photo) => {
-      const photoNode = `<li><img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}'> ${photo.date} ${photo.title}</li>`;
+      const photoNode = `<li class='c-photos__photo'>
+        <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}'>
+        <h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
+        <p class='c-photos__date'>${photo.date}</p>
+      </li>`;
       listNode.insertAdjacentHTML('beforeend', photoNode);
     })
 
