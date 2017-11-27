@@ -8,14 +8,22 @@ a {
 .c-title {
   font-family: 'Bungee Shade', Menlo, Monaco, monospace;
   font-size: 32px;
-  padding: 10px 5px 0 5px;
-  color: #59392c;
+  padding: 10px 10px 0 10px;
+  animation: hypercolor 5s infinite;
+}
+
+@keyframes hypercolor {
+  0% { color: #151440; }
+  25% { color: #241c58; }
+  50% { color: #732f6e; }
+  75% { color: #d94e8f; }
+  100% { color: #eb617d; }
 }
 
 .c-blurb {
   font-family: "Operator Mono", Menlo, Monaco, monospace;
   font-size: 12px;
-  padding: 0 5px 10px 5px;
+  padding: 0 10px 10px 10px;
   color: #222;
 }
 
