@@ -1,4 +1,5 @@
 const express = require('express');
+const sharp = require('sharp');
 const app = express();
 const fs = require('fs');
 const path = require('path');
@@ -36,7 +37,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/assets/:photo', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/assets/${req.params.photo}`));
+  sharp(path.join(`${__dirname}/assets/${req.params.photo}`))
+    .resize(parseInt(req.query.w, 10))
+    .toBuffer().then(data => res.end(data, 'binary'));
 });
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))

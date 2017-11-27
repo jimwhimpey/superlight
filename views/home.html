@@ -12,7 +12,7 @@
   fetch('./photos/1/4').then(response => response.json()).then(function(photos) {
 
     photos.forEach((photo) => {
-      const photoElement = `<li><img src='assets/${photo.path}' width='300'> ${photo.date} ${photo.title}</li>`;
+      const photoElement = `<li><img src='assets/${photo.path}?w=100' width='300'> ${photo.date} ${photo.title}</li>`;
       list.insertAdjacentHTML('beforeend', photoElement);
     })
 
