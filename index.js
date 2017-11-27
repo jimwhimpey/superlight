@@ -17,10 +17,10 @@ app.get('/photos/:page/:perpage', (req, res) => {
       .sort(function(a, b) { return b.time - a.time; })
       .map(function(photo) { return photo.name; });
 
-    const firstfile = (req.params.page == 1) ? 0 : (req.params.page - 1) * req.params.perpage;
+    const firstFileIndex = (req.params.page == 1) ? 0 : (req.params.page - 1) * req.params.perpage;
     const output = [];
 
-    for (var i = firstfile; i < req.params.perpage * req.params.page; i++) {
+    for (var i = firstFileIndex; i < req.params.perpage * req.params.page; i++) {
       if (!sortedPhotos[i] || sortedPhotos[i] === '.DS_Store') continue;
       output.push({
         path: sortedPhotos[i],
