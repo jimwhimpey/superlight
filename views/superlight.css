@@ -14,19 +14,33 @@ a {
 
 @keyframes hypercolor {
   0% { color: #151440; }
-  25% { color: #241c58; }
+  25% { color: #eb617d; }
   50% { color: #732f6e; }
   75% { color: #d94e8f; }
-  100% { color: #eb617d; }
+  100% { color: #151440; }
 }
 
 .c-blurb {
   font-family: "Operator Mono", Menlo, Monaco, monospace;
   font-size: 12px;
   padding: 0 10px 10px 10px;
-  color: #222;
+  color: rgba(0,0,0,0.8);
 }
 
 .c-photos__photo {
   margin: 0 0 10px 0;
+}
+
+.c-photos__title {
+  font-family: "Operator Mono", Menlo, Monaco, monospace;
+  font-size: 12px;
+  padding: 10px 10px 5px 10px;
+  color: rgba(0,0,0,0.8);
+}
+
+.c-photos__date {
+  font-family: "Operator Mono", Menlo, Monaco, monospace;
+  font-size: 12px;
+  padding: 0 10px 10px 10px;
+  color: rgba(0,0,0,0.5);
 }

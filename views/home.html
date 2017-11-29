@@ -9,6 +9,8 @@
 <ol class='c-photos'>
 </ol>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.js"></script>
+
 <script type="text/javascript">
 
   const listNode = document.querySelector('.c-photos');
@@ -21,7 +23,7 @@
       const photoNode = `<li class='c-photos__photo'>
         <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}'>
         <h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
-        <p class='c-photos__date'>${photo.date}</p>
+        <p class='c-photos__date'>${moment(photo.date).fromNow()}</p>
       </li>`;
       listNode.insertAdjacentHTML('beforeend', photoNode);
     })
