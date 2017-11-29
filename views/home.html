@@ -13,21 +13,63 @@
 
 <script type="text/javascript">
 
+  let isLoading = false;
+
   const listNode = document.querySelector('.c-photos');
   const widthVirtual = window.innerWidth;
-  const widthActual = widthVirtual * Math.min(2, window.devicePixelRatio)
+  const widthActual = widthVirtual * Math.min(2, window.devicePixelRatio);
 
-  fetch('./photos/1/4').then(response => response.json()).then(function(photos) {
+  let page = 1;
+  const perPage = 3;
 
-    photos.forEach((photo) => {
-      const photoNode = `<li class='c-photos__photo'>
-        <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}'>
-        <h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
-        <p class='c-photos__date'>${moment(photo.date).fromNow()}</p>
-      </li>`;
-      listNode.insertAdjacentHTML('beforeend', photoNode);
-    })
+  function loadPhotos() {
 
-  });
+    isLoading = true;
+
+    fetch(`./photos/${page}/${perPage}`).then(response => response.json()).then(function(photos) {
+      photos.forEach((photo) => {
+        const photoNode = `<li class='c-photos__photo'>
+          <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}'>
+          <h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
+          <p class='c-photos__date'>${moment(photo.date).fromNow()}</p>
+        </li>`;
+        listNode.insertAdjacentHTML('beforeend', photoNode);
+      });
+      isLoading = false;
+    });
+
+  }
+
+  // Initial load
+  loadPhotos();
+
+  // Listen for the end of the page
+  window.addEventListener('scroll', throttle(() => {
+
+    const viewportHeight = window.innerHeight;
+    const scrollPosition = window.scrollY;
+    const pageHeight = document.body.scrollHeight;
+    const distanceFromBottom = pageHeight - (viewportHeight + scrollPosition);
+
+    if (distanceFromBottom < 100) {
+      page += 1;
+      loadPhotos();
+    }
+
+  }, 100));
+
+  function throttle(callback, limit) {
+    var wait = false;
+    return function() {
+      if (!wait) {
+        callback.call();
+        wait = true;
+        setTimeout(function() {
+          wait = false;
+        }, limit);
+      }
+    }
+  }
+
 
 </script>
