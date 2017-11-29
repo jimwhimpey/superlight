@@ -8,8 +8,8 @@ a {
 .c-title {
   font-family: 'Bungee Shade', Menlo, Monaco, monospace;
   font-size: 32px;
-  padding: 10px 10px 0 10px;
-  animation: hypercolor 5s infinite;
+  padding: 10px 10px 5px 10px;
+  animation: hypercolor 15s infinite;
 }
 
 @keyframes hypercolor {
