@@ -22,9 +22,12 @@ app.get('/photos/:page/:perpage', (req, res) => {
     const output = [];
 
     for (var i = firstFileIndex; i < req.params.perpage * req.params.page; i++) {
-      if (!sortedPhotos[i] || sortedPhotos[i].title === '.DS_Store') continue;
+      if (!sortedPhotos[i]) continue;
       output.push(sortedPhotos[i]);
     }
+
+    // Handle reaching the end
+    if (output.length < req.params.perpage) output.push('atEnd');
 
     res.json(output);
 

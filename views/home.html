@@ -6,14 +6,14 @@
 <h1 class='c-title'>Superlight</h1>
 <h2 class='c-blurb'>A photo blog by <a href="http://jimwhimpey.com">Jim Whimpey</a></h2>
 
-<ol class='c-photos'>
-</ol>
+<ol class='c-photos'></ol>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.js"></script>
 
 <script type="text/javascript">
 
   let isLoading = false;
+  let atEnd = false;
 
   const listNode = document.querySelector('.c-photos');
   const widthVirtual = window.innerWidth;
@@ -27,6 +27,12 @@
     isLoading = true;
 
     fetch(`./photos/${page}/${perPage}`).then(response => response.json()).then(function(photos) {
+
+      if (photos.indexOf('atEnd') >= 0) {
+        atEnd = true;
+        photos.splice(photos.indexOf('atEnd'), 1);
+      }
+
       photos.forEach((photo) => {
         const photoNode = `<li class='c-photos__photo'>
           <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}'>
@@ -51,7 +57,7 @@
     const pageHeight = document.body.scrollHeight;
     const distanceFromBottom = pageHeight - (viewportHeight + scrollPosition);
 
-    if (distanceFromBottom < 100) {
+    if (distanceFromBottom < 100 && !atEnd) {
       page += 1;
       loadPhotos();
     }
