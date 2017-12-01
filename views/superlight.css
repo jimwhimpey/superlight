@@ -7,9 +7,14 @@ a {
 
 .c-title {
   font-family: 'Bungee Shade', Menlo, Monaco, monospace;
-  font-size: 32px;
-  padding: 10px 10px 5px 10px;
+  font-size: 24px;
+  margin: 12px 15px 10px 15px;
   animation: hypercolor 15s infinite;
+  letter-spacing: 10px;
+}
+
+.c-title__bonus {
+  opacity: 0.6;
 }
 
 @keyframes hypercolor {

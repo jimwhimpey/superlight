@@ -3,8 +3,10 @@
 <link rel="stylesheet" href="./superlight.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<h1 class='c-title'>Superlight</h1>
-<h2 class='c-blurb'>A photo blog by <a href="http://jimwhimpey.com">Jim Whimpey</a></h2>
+<h1 class='c-title'>
+  <a href='/'>Superlight</a>
+  <a href="#" class='c-title__bonus'>&#x2022;</a>
+</h1>
 
 <ol class='c-photos'></ol>
 
@@ -27,6 +29,8 @@
     isLoading = true;
 
     fetch(`./photos/${page}/${perPage}`).then(response => response.json()).then(function(photos) {
+
+      console.log(photos);
 
       if (photos.indexOf('atEnd') >= 0) {
         atEnd = true;

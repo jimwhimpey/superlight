@@ -1,5 +1,6 @@
 const express = require('express');
 const sharp = require('sharp');
+const sizeOf = require('image-size');
 const app = express();
 const fs = require('fs');
 const path = require('path');
@@ -14,7 +15,8 @@ app.get('/photos/:page/:perpage', (req, res) => {
     const sortedPhotos = photos.map(photo => ({
         path: photo,
         title: photo.replace(/\.jpg$/, ''),
-        date: fs.statSync(`./assets/${photo}`).mtime.getTime()
+        date: fs.statSync(`./assets/${photo}`).mtime.getTime(),
+        ratio: sizeOf(`./assets/${photo}`).width / sizeOf(`./assets/${photo}`).height,
       }))
       .sort(function(a, b) { return b.date - a.date; });
 
