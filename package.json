@@ -7,6 +7,8 @@
     "express": "^4.16.2",
     "hbs": "^4.0.1",
     "image-size": "^0.6.1",
+    "mustache-express": "^1.2.5",
+    "mustache-express4": "0.0.7",
     "sharp": "^0.18.4",
     "supervisor": "^0.12.0"
   },

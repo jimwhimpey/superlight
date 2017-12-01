@@ -1,9 +1,14 @@
 const express = require('express');
+const mustacheExpress = require('mustache-express');
 const sharp = require('sharp');
 const sizeOf = require('image-size');
 const app = express();
 const fs = require('fs');
 const path = require('path');
+
+app.engine('mustache', mustacheExpress());
+app.set('view engine', 'mustache');
+app.set('views', __dirname + '/views');
 
 app.get('/photos/:page/:perpage', (req, res) => {
 
@@ -34,6 +39,24 @@ app.get('/photos/:page/:perpage', (req, res) => {
     res.json(output);
 
   });
+
+});
+
+app.get('/photo/:timestamp', (req, res) => {
+
+  fs.readdir('./assets', function(err, photos) {
+
+    let individualPhoto = '';
+
+    photos.forEach(photo => {
+      if (fs.statSync(`./assets/${photo}`).mtime.getTime() === req.params.timestamp) {
+        individualPhoto = photo;
+      }
+    });
+
+  });
+
+  res.render('permalink', { title: 'Hey', message: 'Hello there!' })
 
 });
 
