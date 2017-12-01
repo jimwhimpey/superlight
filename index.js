@@ -6,7 +6,7 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 
-app.engine('mustache', mustacheExpress());
+app.engine('mustache', mustacheExpress(__dirname + '/views/partials'));
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
@@ -54,14 +54,14 @@ app.get('/photo/:timestamp', (req, res) => {
       }
     });
 
-  });
+    res.render('permalink', { photo: individualPhoto });
 
-  res.render('permalink', { title: 'Hey', message: 'Hello there!' })
+  });
 
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/views/home.html`));
+  res.render('home', {});
 });
 
 app.get('/superlight.css', (req, res) => {
