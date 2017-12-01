@@ -39,7 +39,7 @@
 
       photos.forEach((photo) => {
         const photoNode = `<li class='c-photos__photo'>
-          <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}'>
+          <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}' height='${widthVirtual/photo.ratio}'>
           <h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
           <p class='c-photos__date'>${moment(photo.date).fromNow()}</p>
         </li>`;
