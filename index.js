@@ -10,6 +10,39 @@ app.engine('mustache', mustacheExpress(__dirname + '/views/partials'));
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
+/**
+ * The home page
+ */
+app.get('/', (req, res) => {
+  res.render('home', {});
+});
+
+/**
+ * The individual photo page
+ */
+app.get('/photo/:timestamp', (req, res) => {
+
+  fs.readdir('./assets', function(err, photos) {
+
+    let individualPhoto = '';
+
+    photos.forEach(photo => {
+      if (fs.statSync(`./assets/${photo}`).mtime.getTime() == req.params.timestamp) {
+        individualPhoto = {
+          path: photo,
+          title: photo.replace(/\.jpg$/, ''),
+          date: fs.statSync(`./assets/${photo}`).mtime.getTime(),
+          ratio: sizeOf(`./assets/${photo}`).width / sizeOf(`./assets/${photo}`).height,
+        };
+      }
+    });
+
+    res.render('permalink', { photo: JSON.stringify(individualPhoto) });
+
+  });
+
+});
+
 app.get('/photos/:page/:perpage', (req, res) => {
 
   fs.readdir('./assets', function(err, photos) {
@@ -40,33 +73,6 @@ app.get('/photos/:page/:perpage', (req, res) => {
 
   });
 
-});
-
-app.get('/photo/:timestamp', (req, res) => {
-
-  fs.readdir('./assets', function(err, photos) {
-
-    let individualPhoto = '';
-
-    photos.forEach(photo => {
-      if (fs.statSync(`./assets/${photo}`).mtime.getTime() == req.params.timestamp) {
-        individualPhoto = {
-          path: photo,
-          title: photo.replace(/\.jpg$/, ''),
-          date: fs.statSync(`./assets/${photo}`).mtime.getTime(),
-          ratio: sizeOf(`./assets/${photo}`).width / sizeOf(`./assets/${photo}`).height,
-        };
-      }
-    });
-
-    res.render('permalink', { photo: JSON.stringify(individualPhoto) });
-
-  });
-
-});
-
-app.get('/', (req, res) => {
-  res.render('home', {});
 });
 
 app.get('/superlight.css', (req, res) => {

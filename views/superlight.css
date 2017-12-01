@@ -36,13 +36,13 @@ a {
 .c-photos__title {
   font-family: "Operator Mono", Menlo, Monaco, monospace;
   font-size: 12px;
-  padding: 10px 10px 5px 10px;
+  padding: 10px 15px 5px 15px;
   color: rgba(0,0,0,0.8);
 }
 
 .c-photos__date {
   font-family: "Operator Mono", Menlo, Monaco, monospace;
   font-size: 12px;
-  padding: 0 10px 10px 10px;
+  padding: 0 15px 10px 15px;
   color: rgba(0,0,0,0.5);
 }
