@@ -37,7 +37,7 @@
 
       photos.forEach((photo) => {
         const photoNode = `<li class='c-photos__photo'>
-          <div class='c-photos__placeholder' style='width: ${widthVirtual}px; height: '${widthVirtual/photo.ratio}px'>
+          <div class='c-photos__placeholder' style='width: ${widthVirtual}px; height: ${widthVirtual/photo.ratio}px;'>
             <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}' height='${widthVirtual/photo.ratio}'>
           </div>
           <h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>

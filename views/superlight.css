@@ -25,9 +25,12 @@ a {
   100% { color: #151440; }
 }
 
+.c-photos__photo {
+  margin: 0 0 10px 0;
+}
+
 .c-photos__placeholder {
   background: rgba(0,0,0,0.1);
-  margin: 0 0 10px 0;
 }
 
 .c-photos__title {
