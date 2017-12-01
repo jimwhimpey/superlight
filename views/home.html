@@ -30,8 +30,6 @@
 
     fetch(`./photos/${page}/${perPage}`).then(response => response.json()).then(function(photos) {
 
-      console.log(photos);
-
       if (photos.indexOf('atEnd') >= 0) {
         atEnd = true;
         photos.splice(photos.indexOf('atEnd'), 1);
@@ -39,7 +37,9 @@
 
       photos.forEach((photo) => {
         const photoNode = `<li class='c-photos__photo'>
-          <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}' height='${widthVirtual/photo.ratio}'>
+          <div class='c-photos__placeholder' style='width: ${widthVirtual}px; height: '${widthVirtual/photo.ratio}px'>
+            <img src='assets/${photo.path}?w=${widthActual}' width='${widthVirtual}' height='${widthVirtual/photo.ratio}'>
+          </div>
           <h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
           <p class='c-photos__date'>${moment(photo.date).fromNow()}</p>
         </li>`;
@@ -61,7 +61,7 @@
     const pageHeight = document.body.scrollHeight;
     const distanceFromBottom = pageHeight - (viewportHeight + scrollPosition);
 
-    if (distanceFromBottom < 100 && !atEnd) {
+    if (distanceFromBottom < (viewportHeight/2) && !atEnd) {
       page += 1;
       loadPhotos();
     }

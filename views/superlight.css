@@ -25,14 +25,8 @@ a {
   100% { color: #151440; }
 }
 
-.c-blurb {
-  font-family: "Operator Mono", Menlo, Monaco, monospace;
-  font-size: 12px;
-  padding: 0 10px 10px 10px;
-  color: rgba(0,0,0,0.8);
-}
-
-.c-photos__photo {
+.c-photos__placeholder {
+  background: rgba(0,0,0,0.1);
   margin: 0 0 10px 0;
 }
 
