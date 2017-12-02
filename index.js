@@ -31,26 +31,9 @@ app.get('/', (req, res) => {
  * The individual photo page
  */
 app.get('/photo/:timestamp', (req, res) => {
-
-  fs.readdir('./assets', function(err, photos) {
-
-    let individualPhoto = '';
-
-    photos.forEach(photo => {
-      if (fs.statSync(`./assets/${photo}`).mtime.getTime() == req.params.timestamp) {
-        individualPhoto = {
-          path: photo,
-          title: photo.replace(/\.jpg$/, ''),
-          date: fs.statSync(`./assets/${photo}`).mtime.getTime(),
-          ratio: sizeOf(`./assets/${photo}`).width / sizeOf(`./assets/${photo}`).height,
-        };
-      }
-    });
-
+  assets.getIndividual(req.params.timestamp).then((individualPhoto) => {
     res.render('permalink', { photo: JSON.stringify(individualPhoto) });
-
   });
-
 });
 
 /**
