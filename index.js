@@ -15,7 +15,16 @@ app.set('views', __dirname + '/views');
  * The home page
  */
 app.get('/', (req, res) => {
-  res.render('home', {});
+
+  const pageSize = 5;
+
+  assets.getPage(1, pageSize).then((photos) => {
+    res.render('home', {
+      photos: JSON.stringify(photos),
+      pageSize: pageSize,
+    });
+  });
+
 });
 
 /**
@@ -44,6 +53,9 @@ app.get('/photo/:timestamp', (req, res) => {
 
 });
 
+/**
+ * The photo fetching JSON api
+ */
 app.get('/photos/:page/:perpage', (req, res) => {
 
   assets.getPage(req.params.page, req.params.perpage).then((photos) => {

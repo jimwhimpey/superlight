@@ -2,11 +2,16 @@
 
 <script type="text/javascript">
 
+  // Load the initial page of photos with data returned from the server
+  const initialPhotos = {{{photos}}};
+  initialPhotos.forEach(photo => listNode.insertAdjacentHTML('beforeend', generatePhotoHTML(photo)));
+
   let isLoading = false;
   let atEnd = false;
 
-  let page = 1;
-  const perPage = 3;
+  // The first page was loaded by the server
+  let page = 2;
+  const perPage = {{pageSize}};
 
   function loadPhotos() {
 
@@ -19,17 +24,11 @@
         photos.splice(photos.indexOf('atEnd'), 1);
       }
 
-      photos.forEach((photo) => {
-        const photoNode = generatePhotoHTML(photo);
-        listNode.insertAdjacentHTML('beforeend', photoNode);
-      });
+      photos.forEach(photo => listNode.insertAdjacentHTML('beforeend', generatePhotoHTML(photo)));
       isLoading = false;
     });
 
   }
-
-  // Initial load
-  loadPhotos();
 
   // Listen for the end of the page
   window.addEventListener('scroll', throttle(() => {
@@ -39,7 +38,7 @@
     const pageHeight = document.body.scrollHeight;
     const distanceFromBottom = pageHeight - (viewportHeight + scrollPosition);
 
-    if (distanceFromBottom < (viewportHeight/2) && !atEnd) {
+    if (distanceFromBottom < (viewportHeight/2) && !atEnd && !isLoading) {
       page += 1;
       loadPhotos();
     }
