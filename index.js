@@ -16,14 +16,14 @@ app.set('views', __dirname + '/views');
  */
 app.get('/', (req, res) => {
 
-  const pageSize = 5;
+	const pageSize = 5;
 
-  assets.getPage(1, pageSize).then((photos) => {
-    res.render('home', {
-      photos: JSON.stringify(photos),
-      pageSize: pageSize,
-    });
-  });
+	assets.getPage(1, pageSize).then((photos) => {
+		res.render('home', {
+			photos: JSON.stringify(photos),
+			pageSize: pageSize,
+		});
+	});
 
 });
 
@@ -31,9 +31,9 @@ app.get('/', (req, res) => {
  * The individual photo page
  */
 app.get('/photo/:timestamp', (req, res) => {
-  assets.getIndividual(req.params.timestamp).then((individualPhoto) => {
-    res.render('permalink', { photo: JSON.stringify(individualPhoto) });
-  });
+	assets.getIndividual(req.params.timestamp).then((individualPhoto) => {
+		res.render('permalink', { photo: JSON.stringify(individualPhoto) });
+	});
 });
 
 /**
@@ -41,22 +41,22 @@ app.get('/photo/:timestamp', (req, res) => {
  */
 app.get('/photos/:page/:perpage', (req, res) => {
 
-  assets.getPage(req.params.page, req.params.perpage).then((photos) => {
-    // Handle reaching the end
-    if (photos.length < req.params.perpage) photos.push('atEnd');
-    res.json(photos);
-  });
+	assets.getPage(req.params.page, req.params.perpage).then((photos) => {
+		// Handle reaching the end
+		if (photos.length < req.params.perpage) photos.push('atEnd');
+		res.json(photos);
+	});
 
 });
 
 app.get('/superlight.css', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/views/superlight.css`));
+	res.sendFile(path.join(`${__dirname}/views/superlight.css`));
 });
 
 app.get('/assets/:photo', (req, res) => {
-  sharp(path.join(`${__dirname}/assets/${req.params.photo}`))
-    .resize(parseInt(req.query.w, 10))
-    .toBuffer().then(data => res.end(data, 'binary'));
+	sharp(path.join(`${__dirname}/assets/${req.params.photo}`))
+		.resize(parseInt(req.query.w, 10))
+		.toBuffer().then(data => res.end(data, 'binary'));
 });
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))

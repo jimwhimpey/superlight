@@ -9,70 +9,70 @@ const sizeOf = require('image-size');
  */
 module.exports = {
 
-  getPage: function(page, perPage) {
+	getPage: function(page, perPage) {
 
-    return new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
 
-      fs.readdir('./assets', function(err, photos) {
+			fs.readdir('./assets', function(err, photos) {
 
-        if (err) reject(err);
-        if (!photos) reject('Empty dir');
+				if (err) reject(err);
+				if (!photos) reject('Empty dir');
 
-        const sortedPhotos = photos.map(photo => ({
-            path: photo,
-            title: photo.replace(/\.jpg$/, ''),
-            date: fs.statSync(`./assets/${photo}`).mtime.getTime(),
-            ratio: sizeOf(`./assets/${photo}`).width / sizeOf(`./assets/${photo}`).height,
-          }))
-          .sort(function(a, b) { return b.date - a.date; });
+				const sortedPhotos = photos.map(photo => ({
+						path: photo,
+						title: photo.replace(/\.jpg$/, ''),
+						date: fs.statSync(`./assets/${photo}`).mtime.getTime(),
+						ratio: sizeOf(`./assets/${photo}`).width / sizeOf(`./assets/${photo}`).height,
+					}))
+					.sort(function(a, b) { return b.date - a.date; });
 
-        const firstFileIndex = (page == 1) ? 0 : (page - 1) * perPage;
-        const output = [];
+				const firstFileIndex = (page == 1) ? 0 : (page - 1) * perPage;
+				const output = [];
 
-        for (var i = firstFileIndex; i < perPage * page; i++) {
-          if (!sortedPhotos[i]) continue;
-          output.push(sortedPhotos[i]);
-        }
+				for (var i = firstFileIndex; i < perPage * page; i++) {
+					if (!sortedPhotos[i]) continue;
+					output.push(sortedPhotos[i]);
+				}
 
-        resolve(output);
+				resolve(output);
 
-      });
+			});
 
-    });
+		});
 
-  },
+	},
 
-  /**
-   * Loops through the asset directory until it finds a matching
-   * timestamp and then returns it.
-   * @param {Number} timestamp the timestamp of the photo we're returning
-   * @return {Promise} promise of that individual photo
-   */
-  getIndividual: function(timestamp) {
+	/**
+	 * Loops through the asset directory until it finds a matching
+	 * timestamp and then returns it.
+	 * @param {Number} timestamp the timestamp of the photo we're returning
+	 * @return {Promise} promise of that individual photo
+	 */
+	getIndividual: function(timestamp) {
 
-    return new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
 
-      fs.readdir('./assets', function(err, photos) {
+			fs.readdir('./assets', function(err, photos) {
 
-        let individualPhoto = '';
+				let individualPhoto = '';
 
-        photos.forEach(photo => {
-          if (fs.statSync(`./assets/${photo}`).mtime.getTime() == timestamp) {
-            individualPhoto = {
-              path: photo,
-              title: photo.replace(/\.jpg$/, ''),
-              date: fs.statSync(`./assets/${photo}`).mtime.getTime(),
-              ratio: sizeOf(`./assets/${photo}`).width / sizeOf(`./assets/${photo}`).height,
-            };
-          }
-        });
+				photos.forEach(photo => {
+					if (fs.statSync(`./assets/${photo}`).mtime.getTime() == timestamp) {
+						individualPhoto = {
+							path: photo,
+							title: photo.replace(/\.jpg$/, ''),
+							date: fs.statSync(`./assets/${photo}`).mtime.getTime(),
+							ratio: sizeOf(`./assets/${photo}`).width / sizeOf(`./assets/${photo}`).height,
+						};
+					}
+				});
 
-        resolve(individualPhoto);
+				resolve(individualPhoto);
 
-      });
+			});
 
-    });
+		});
 
-  },
+	},
 
 };

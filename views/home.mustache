@@ -2,60 +2,60 @@
 
 <script type="text/javascript">
 
-  // Load the initial page of photos with data returned from the server
-  const initialPhotos = {{{photos}}};
-  initialPhotos.forEach(photo => listNode.insertAdjacentHTML('beforeend', generatePhotoHTML(photo)));
+	// Load the initial page of photos with data returned from the server
+	const initialPhotos = {{{photos}}};
+	initialPhotos.forEach(photo => listNode.insertAdjacentHTML('beforeend', generatePhotoHTML(photo)));
 
-  let isLoading = false;
-  let atEnd = false;
+	let isLoading = false;
+	let atEnd = false;
 
-  // The first page was loaded by the server
-  let page = 2;
-  const perPage = {{pageSize}};
+	// The first page was loaded by the server
+	let page = 2;
+	const perPage = {{pageSize}};
 
-  function loadPhotos() {
+	function loadPhotos() {
 
-    isLoading = true;
+		isLoading = true;
 
-    fetch(`./photos/${page}/${perPage}`).then(response => response.json()).then(function(photos) {
+		fetch(`./photos/${page}/${perPage}`).then(response => response.json()).then(function(photos) {
 
-      if (photos.indexOf('atEnd') >= 0) {
-        atEnd = true;
-        photos.splice(photos.indexOf('atEnd'), 1);
-      }
+			if (photos.indexOf('atEnd') >= 0) {
+				atEnd = true;
+				photos.splice(photos.indexOf('atEnd'), 1);
+			}
 
-      photos.forEach(photo => listNode.insertAdjacentHTML('beforeend', generatePhotoHTML(photo)));
-      isLoading = false;
-    });
+			photos.forEach(photo => listNode.insertAdjacentHTML('beforeend', generatePhotoHTML(photo)));
+			isLoading = false;
+		});
 
-  }
+	}
 
-  // Listen for the end of the page
-  window.addEventListener('scroll', throttle(() => {
+	// Listen for the end of the page
+	window.addEventListener('scroll', throttle(() => {
 
-    const viewportHeight = window.innerHeight;
-    const scrollPosition = window.scrollY;
-    const pageHeight = document.body.scrollHeight;
-    const distanceFromBottom = pageHeight - (viewportHeight + scrollPosition);
+		const viewportHeight = window.innerHeight;
+		const scrollPosition = window.scrollY;
+		const pageHeight = document.body.scrollHeight;
+		const distanceFromBottom = pageHeight - (viewportHeight + scrollPosition);
 
-    if (distanceFromBottom < (viewportHeight/2) && !atEnd && !isLoading) {
-      page += 1;
-      loadPhotos();
-    }
+		if (distanceFromBottom < (viewportHeight/2) && !atEnd && !isLoading) {
+			page += 1;
+			loadPhotos();
+		}
 
-  }, 100));
+	}, 100));
 
-  function throttle(callback, limit) {
-    var wait = false;
-    return function() {
-      if (!wait) {
-        callback.call();
-        wait = true;
-        setTimeout(function() {
-          wait = false;
-        }, limit);
-      }
-    }
-  }
+	function throttle(callback, limit) {
+		var wait = false;
+		return function() {
+			if (!wait) {
+				callback.call();
+				wait = true;
+				setTimeout(function() {
+					wait = false;
+				}, limit);
+			}
+		}
+	}
 
 </script>

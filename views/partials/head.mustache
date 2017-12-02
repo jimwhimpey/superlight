@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <h1 class='c-title'>
-  <a href='/'>Superlight</a>
-  <a href="#" class='c-title__bonus'>&#x2022;</a>
+	<a href='/'>Superlight</a>
+	<a href="#" class='c-title__bonus'>&#x2022;</a>
 </h1>
 
 <ol class='c-photos'></ol>
@@ -14,20 +14,20 @@
 
 <script type="text/javascript">
 
-  const listNode = document.querySelector('.c-photos');
-  const widthVirtual = window.innerWidth;
-  const widthActual = widthVirtual * Math.min(2, window.devicePixelRatio);
+	const listNode = document.querySelector('.c-photos');
+	const widthVirtual = window.innerWidth;
+	const widthActual = widthVirtual * Math.min(2, window.devicePixelRatio);
 
-  function generatePhotoHTML(photo) {
-    return `<li class='c-photos__photo'>
-      <div class='c-photos__placeholder' style='width: ${widthVirtual}px; height: ${widthVirtual/photo.ratio}px;'>
-        <a href='/photo/${photo.date}'>
-          <img src='/assets/${photo.path}?w=${widthActual}' width='${widthVirtual}' height='${widthVirtual/photo.ratio}'>
-        </a>
-      </div>
-      <h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
-      <p class='c-photos__date'><a href='/photo/${photo.date}'>${moment(photo.date).fromNow()}</a></p>
-    </li>`;
-  }
+	function generatePhotoHTML(photo) {
+		return `<li class='c-photos__photo'>
+			<div class='c-photos__placeholder' style='width: ${widthVirtual}px; height: ${widthVirtual/photo.ratio}px;'>
+				<a href='/photo/${photo.date}'>
+					<img src='/assets/${photo.path}?w=${widthActual}' width='${widthVirtual}' height='${widthVirtual/photo.ratio}'>
+				</a>
+			</div>
+			<h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
+			<p class='c-photos__date'><a href='/photo/${photo.date}'>${moment(photo.date).fromNow()}</a></p>
+		</li>`;
+	}
 
 </script>

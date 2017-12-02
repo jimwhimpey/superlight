@@ -2,47 +2,47 @@
 * {margin:0;padding:0;outline:0;font-size:1em;font-weight:normal;font-style:normal;border:0;text-decoration:none;list-style-type:none}
 
 a {
-  color: inherit;
+	color: inherit;
 }
 
 .c-title {
-  font-family: 'Bungee Shade', Menlo, Monaco, monospace;
-  font-size: 24px;
-  margin: 12px 15px 10px 15px;
-  animation: hypercolor 15s infinite;
-  letter-spacing: 10px;
+	font-family: 'Bungee Shade', Menlo, Monaco, monospace;
+	font-size: 24px;
+	margin: 12px 15px 10px 15px;
+	animation: hypercolor 15s infinite;
+	letter-spacing: 10px;
 }
 
 .c-title__bonus {
-  opacity: 0.6;
+	opacity: 0.6;
 }
 
 @keyframes hypercolor {
-  0% { color: #151440; }
-  25% { color: #eb617d; }
-  50% { color: #732f6e; }
-  75% { color: #d94e8f; }
-  100% { color: #151440; }
+	0% { color: #151440; }
+	25% { color: #eb617d; }
+	50% { color: #732f6e; }
+	75% { color: #d94e8f; }
+	100% { color: #151440; }
 }
 
 .c-photos__photo {
-  margin: 0 0 10px 0;
+	margin: 0 0 10px 0;
 }
 
 .c-photos__placeholder {
-  background: rgba(0,0,0,0.1);
+	background: rgba(0,0,0,0.1);
 }
 
 .c-photos__title {
-  font-family: "Operator Mono", Menlo, Monaco, monospace;
-  font-size: 12px;
-  padding: 10px 15px 5px 15px;
-  color: rgba(0,0,0,0.8);
+	font-family: "Operator Mono", Menlo, Monaco, monospace;
+	font-size: 12px;
+	padding: 10px 15px 5px 15px;
+	color: rgba(0,0,0,0.8);
 }
 
 .c-photos__date {
-  font-family: "Operator Mono", Menlo, Monaco, monospace;
-  font-size: 12px;
-  padding: 0 15px 10px 15px;
-  color: rgba(0,0,0,0.5);
+	font-family: "Operator Mono", Menlo, Monaco, monospace;
+	font-size: 12px;
+	padding: 0 15px 10px 15px;
+	color: rgba(0,0,0,0.5);
 }
