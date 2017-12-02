@@ -6,6 +6,7 @@
 	const initialPhotos = {{{photos}}};
 	initialPhotos.forEach(photo => listNode.insertAdjacentHTML('beforeend', generatePhotoHTML(photo)));
 
+	// Stop ourselves going crazy
 	let isLoading = false;
 	let atEnd = false;
 
@@ -18,12 +19,7 @@
 		isLoading = true;
 
 		fetch(`./photos/${page}/${perPage}`).then(response => response.json()).then(function(photos) {
-
-			if (photos.indexOf('atEnd') >= 0) {
-				atEnd = true;
-				photos.splice(photos.indexOf('atEnd'), 1);
-			}
-
+			if (photos.indexOf('atEnd') >= 0) { atEnd = true; photos.splice(photos.indexOf('atEnd'), 1); }
 			photos.forEach(photo => listNode.insertAdjacentHTML('beforeend', generatePhotoHTML(photo)));
 			isLoading = false;
 		});
@@ -44,18 +40,5 @@
 		}
 
 	}, 100));
-
-	function throttle(callback, limit) {
-		var wait = false;
-		return function() {
-			if (!wait) {
-				callback.call();
-				wait = true;
-				setTimeout(function() {
-					wait = false;
-				}, limit);
-			}
-		}
-	}
 
 </script>
