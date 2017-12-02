@@ -13,3 +13,7 @@ Lightest possible photostream
 * ~Grey loading state background while image comes in~
 * ~Pagination~
 * ~Dynamic image resizing~
+
+## TODO maybe
+
+* Galleries
