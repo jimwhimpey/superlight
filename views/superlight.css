@@ -18,21 +18,12 @@ body {
 }
 
 .c-title__name {
-	animation: hypercolor 15s infinite;
 	letter-spacing: 10px;
 }
 
 .c-title__bonus {
 	text-align: right;
 	padding: 0 0 0 10px;
-}
-
-@keyframes hypercolor {
-	0% { color: #151440; }
-	25% { color: #eb617d; }
-	50% { color: #732f6e; }
-	75% { color: #d94e8f; }
-	100% { color: #151440; }
 }
 
 .c-photos__photo {

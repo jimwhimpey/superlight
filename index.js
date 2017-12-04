@@ -3,6 +3,7 @@ const mustacheExpress = require('mustache-express');
 const sharp = require('sharp');
 const sizeOf = require('image-size');
 const assets = require('./assets.js');
+const hypercolor = require('./hypercolor.js');
 const app = express();
 const fs = require('fs');
 const path = require('path');
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 		res.render('home', {
 			photos: JSON.stringify(photos),
 			pageSize: pageSize,
+			hypercolor: hypercolor(),
 		});
 	});
 
@@ -32,7 +34,10 @@ app.get('/', (req, res) => {
  */
 app.get('/photo/:timestamp', (req, res) => {
 	assets.getIndividual(req.params.timestamp).then((individualPhoto) => {
-		res.render('permalink', { photo: JSON.stringify(individualPhoto) });
+		res.render('permalink', {
+			photo: JSON.stringify(individualPhoto),
+			hypercolor: hypercolor()
+		});
 	});
 });
 
