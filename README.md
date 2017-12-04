@@ -1,21 +1,25 @@
 # Superlight
 
-Lightest possible photostream
+Lightest possible list of photos.
 
-## TODO
+Entirely powered by the file system as a data source.
 
-* JSON feed
+See it at [superlight.jimwhimpey.com](http://superlight.jimwhimpey.com)
 
-* ~"You are at the end"~
-* ~The little bullet with more info~
-* ~Icon for the home screen~
-* ~Randomize and better logo colors~
-* ~Good looking desktop version~
-* ~Render the first page of photos server side~
-* ~Permalink pages~
-* ~Grey loading state background while image comes in~
-* ~Pagination~
-* ~Dynamic image resizing~
+## What does it do?
+
+* Provides a [JSON feed](http://superlight.jimwhimpey.com/feed.json)
+* Looks decent on desktop
+* Full bleed photos on mobile
+* Permalink pages
+* Renders the first page of photos server side
+* Dynamic image resizing
+
+## Why?
+
+* Facebook is creepy
+* Flickr is buggy on mobile
+* I wanted to
 
 ## TODO maybe
 
