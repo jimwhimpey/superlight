@@ -88,7 +88,7 @@ body {
 		font-size: 16px;
 		padding-left: 0;
 	}
-	..c-photos__photo {
+	.c-photos__photo {
 		margin: 0 0 30px 0;
 	}
 }
