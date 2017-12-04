@@ -55,6 +55,42 @@ app.get('/photos/:page/:perpage', (req, res) => {
 
 });
 
+/**
+ * JSON feed
+ */
+app.get('/feed.json', (req, res) => {
+
+	const feed = {
+		"version": "https://jsonfeed.org/version/1",
+		"title": "Superlight",
+		"home_page_url": "http://superlight.jimwhimpey.com/",
+		"feed_url": "http://superlight.jimwhimpey.com/feed.json",
+		"icon": "http://superlight.jimwhimpey.com/apple-touch-icon.png",
+		"author": {
+			"name": "Jim Whimpey",
+			"url": "http://jimwhimpey.com",
+		},
+	};
+
+	// The latest 20 items
+	assets.getPage(1, 20).then((photos) => {
+
+		// Get it in a format appropriate for JSON feed
+		feed.items = photos.map(photo => {
+			return {
+				id: photo.date,
+				url: `http://superlight.jimwhimpey.com/${photo.date}`,
+				content_html: `<p><a href='http://superlight.jimwhimpey.com/${photo.date}'><img src='http://superlight.jimwhimpey.com/assets/${photo.path}?w=1000'></a></p><p>${photo.title}`,
+				summary: photo.title,
+				image: `http://superlight.jimwhimpey.com/assets/${photo.path}?w=1000`,
+			};
+		});
+
+		res.json(feed);
+	});
+
+});
+
 app.get('/assets/:photo', (req, res) => {
 	sharp(path.join(`${__dirname}/assets/${req.params.photo}`))
 		.resize(parseInt(req.query.w, 10))

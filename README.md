@@ -1,11 +1,12 @@
-# superlight
+# Superlight
+
 Lightest possible photostream
 
 ## TODO
 
 * JSON feed
-* "You are at the end"
 
+* ~"You are at the end"~
 * ~The little bullet with more info~
 * ~Icon for the home screen~
 * ~Randomize and better logo colors~
