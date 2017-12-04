@@ -5,8 +5,9 @@ Lightest possible photostream
 
 * JSON feed
 * The little bullet with more info
-* Icon for the home screen
+* "You are at the end"
 
+* ~Icon for the home screen~
 * ~Randomize and better logo colors~
 * ~Good looking desktop version~
 * ~Render the first page of photos server side~
