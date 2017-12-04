@@ -79,8 +79,8 @@ app.get('/feed.json', (req, res) => {
 		feed.items = photos.map(photo => {
 			return {
 				id: photo.date,
-				url: `http://superlight.jimwhimpey.com/${photo.date}`,
-				content_html: `<p><a href='http://superlight.jimwhimpey.com/${photo.date}'><img src='http://superlight.jimwhimpey.com/assets/${photo.path}?w=1000'></a></p><p>${photo.title}`,
+				url: `http://superlight.jimwhimpey.com/photo/${photo.date}`,
+				content_html: `<p><a href='http://superlight.jimwhimpey.com/photo/${photo.date}'><img src='http://superlight.jimwhimpey.com/assets/${photo.path}?w=1000'></a></p><p>${photo.title}`,
 				summary: photo.title,
 				image: `http://superlight.jimwhimpey.com/assets/${photo.path}?w=1000`,
 			};
