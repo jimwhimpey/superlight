@@ -4,9 +4,9 @@ Lightest possible photostream
 ## TODO
 
 * JSON feed
-* The little bullet with more info
 * "You are at the end"
 
+* ~The little bullet with more info~
 * ~Icon for the home screen~
 * ~Randomize and better logo colors~
 * ~Good looking desktop version~

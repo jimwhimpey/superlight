@@ -25,6 +25,9 @@
 	const widthActual = widthVirtual * Math.min(2, window.devicePixelRatio);
 
 	function generatePhotoHTML(photo) {
+
+		if (photo === 'atEnd') return `<div class='c-at_end'>You are at the end</div>`;
+
 		return `<li class='c-photos__photo'>
 			<div class='c-photos__placeholder' style='width: ${widthVirtual}px; height: ${widthVirtual/photo.ratio}px;'>
 				<a href='/photo/${photo.date}'>
@@ -34,6 +37,7 @@
 			<h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
 			<p class='c-photos__date'><a href='/photo/${photo.date}'>${moment(photo.date).fromNow()}</a></p>
 		</li>`;
+
 	}
 
 	// Intercept all clicks and keep things in the webapp

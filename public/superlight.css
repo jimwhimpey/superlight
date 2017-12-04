@@ -70,6 +70,14 @@ body {
 	text-decoration: underline;
 }
 
+.c-at_end {
+	text-align: center;
+	font-family: "Operator Mono", Menlo, Monaco, monospace;
+	font-style: italic;
+	margin: 40px 0 80px 0;
+	color: rgba(0,0,0,0.5);
+}
+
 @media (min-width: 1000px) {
 	.c-title {
 		font-size: 32px;

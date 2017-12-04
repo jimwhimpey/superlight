@@ -19,7 +19,7 @@
 		isLoading = true;
 
 		fetch(`./photos/${page}/${perPage}`).then(response => response.json()).then(function(photos) {
-			if (photos.indexOf('atEnd') >= 0) { atEnd = true; photos.splice(photos.indexOf('atEnd'), 1); }
+			if (photos.indexOf('atEnd') >= 0) atEnd = true;
 			photos.forEach(photo => listNode.insertAdjacentHTML('beforeend', generatePhotoHTML(photo)));
 			isLoading = false;
 		});
