@@ -15,7 +15,7 @@
 <script type="text/javascript">
 
 	const listNode = document.querySelector('.c-photos');
-	const widthVirtual = window.innerWidth;
+	const widthVirtual = (window.innerWidth > 1000) ? 1000 : window.innerWidth;
 	const widthActual = widthVirtual * Math.min(2, window.devicePixelRatio);
 
 	function generatePhotoHTML(photo) {

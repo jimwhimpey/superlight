@@ -1,8 +1,10 @@
 /* Reset */
 * {margin:0;padding:0;outline:0;font-size:1em;font-weight:normal;font-style:normal;border:0;text-decoration:none;list-style-type:none}
 
-a {
-	color: inherit;
+body {
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
 }
 
 .c-title {
