@@ -41,10 +41,4 @@
 
 	}, 100));
 
-	// Intercept all clicks and keep things in the webapp
-	window.addEventListener('click', e => {
-		const closestA = e.target.closest('a');
-		if (closestA) window.location = closestA.getAttribute("href");
-	});
-
 </script>

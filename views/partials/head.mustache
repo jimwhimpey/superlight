@@ -36,6 +36,28 @@
 		</li>`;
 	}
 
+	// Intercept all clicks and keep things in the webapp
+	window.addEventListener('click', e => {
+
+		if (e.target.classList[0] == 'c-title__bonus') {
+			const modal = `<div class='c-modal'>
+				<div class='c-modal__inner'>
+					<p>Photos taken by <a href='http://jimwhimpey.com'>Jim Whimpey</a></p>
+					<p><a href='/feed.json'>Subcribe to the JSON feed</a></p>
+					<p>Close this modal</p>
+				</div>
+			</div>`;
+			document.body.insertAdjacentHTML('beforeend', modal);
+			const insertedModal = document.querySelector('.c-modal');
+			insertedModal.addEventListener('click', e => {
+				if (e.target.nodeName !== 'A') document.body.removeChild(insertedModal);
+			});
+		}
+
+		const closestA = e.target.closest('a');
+		if (closestA) window.location = closestA.getAttribute("href");
+	});
+
 	function throttle(callback, limit) {
 		var wait = false;
 		return function() {

@@ -48,6 +48,27 @@ body {
 	color: rgba(0,0,0,0.5);
 }
 
+.c-modal {
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	background: rgba(0,0,0,0.95);
+	color: white;
+	text-align: center;
+	padding: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.c-modal__inner {
+	width: 100%;
+	line-height: 2;
+	font-family: "Operator Mono", Menlo, Monaco, monospace;
+}
+
+.c-modal__inner a {
+	color: #48a8f0;
+	text-decoration: underline;
+}
 
 @media (min-width: 1000px) {
 	.c-title {
