@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 app.engine('mustache', mustacheExpress(__dirname + '/views/partials'));
+app.use(express.static('public'));
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
@@ -52,10 +53,6 @@ app.get('/photos/:page/:perpage', (req, res) => {
 		res.json(photos);
 	});
 
-});
-
-app.get('/superlight.css', (req, res) => {
-	res.sendFile(path.join(`${__dirname}/views/superlight.css`));
 });
 
 app.get('/assets/:photo', (req, res) => {
