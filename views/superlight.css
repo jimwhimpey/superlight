@@ -13,12 +13,18 @@ body {
 	font-family: 'Bungee Shade', Menlo, Monaco, monospace;
 	font-size: 24px;
 	margin: 12px 15px 10px 15px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.c-title__name {
 	animation: hypercolor 15s infinite;
 	letter-spacing: 10px;
 }
 
 .c-title__bonus {
-	opacity: 0.6;
+	text-align: right;
+	padding: 0 0 0 10px;
 }
 
 @keyframes hypercolor {
