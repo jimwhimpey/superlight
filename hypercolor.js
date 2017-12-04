@@ -15,8 +15,6 @@ module.exports = function() {
 		'#ec6e58',
 		'#6dbddb',
 		'#73e986',
-		'#4c835b',
-		'#70b85d',
 		'#459ecd',
 		'#74f0cc',
 	];
