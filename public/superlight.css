@@ -10,11 +10,13 @@ body {
 }
 
 .c-title {
-	font-family: 'Bungee Shade', Menlo, Monaco, monospace;
+	font-family: 'Bungee', Menlo, Monaco, monospace;
 	font-size: 24px;
 	margin: 12px 15px 10px 15px;
 	display: flex;
 	justify-content: space-between;
+	color: white;
+	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6), 0 0 5px rgba(0, 0, 0, 0.4);
 }
 
 .c-title__name {
@@ -23,6 +25,8 @@ body {
 
 .c-title__bonus {
 	text-align: right;
+	color: grey;
+	text-shadow: none;
 	padding: 0 0 0 10px;
 }
 
