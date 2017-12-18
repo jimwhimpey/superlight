@@ -35,14 +35,15 @@ body {
 }
 
 .c-photos__title {
-	font-family: "Operator Mono", Menlo, Monaco, monospace;
+	font-family: "Operator Mono Book", "Operator Mono", Menlo, Monaco, monospace;
 	font-size: 12px;
+	font-weight: "Book";
 	padding: 10px 15px 5px 15px;
 	color: rgba(0,0,0,0.8);
 }
 
 .c-photos__date {
-	font-family: "Operator Mono", Menlo, Monaco, monospace;
+	font-family: "Operator Mono Book", "Operator Mono", Menlo, Monaco, monospace;
 	font-size: 12px;
 	padding: 0 15px 10px 15px;
 	color: rgba(0,0,0,0.5);
@@ -62,7 +63,7 @@ body {
 .c-modal__inner {
 	width: 100%;
 	line-height: 2;
-	font-family: "Operator Mono", Menlo, Monaco, monospace;
+	font-family: "Operator Mono Book", "Operator Mono", Menlo, Monaco, monospace;
 }
 
 .c-modal__inner a {
@@ -72,7 +73,7 @@ body {
 
 .c-at_end {
 	text-align: center;
-	font-family: "Operator Mono", Menlo, Monaco, monospace;
+	font-family: "Operator Mono Book", "Operator Mono", Menlo, Monaco, monospace;
 	font-style: italic;
 	margin: 40px 0 80px 0;
 	color: rgba(0,0,0,0.5);
