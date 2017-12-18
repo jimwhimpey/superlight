@@ -42,7 +42,8 @@ body {
 	font-family: "Operator Mono Book", "Operator Mono", Menlo, Monaco, monospace;
 	font-size: 12px;
 	font-weight: "Book";
-	padding: 10px 15px 5px 15px;
+	line-height: 1.8;
+	padding: 10px 15px 0 15px;
 	color: rgba(0,0,0,0.8);
 }
 
