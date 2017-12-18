@@ -12,7 +12,7 @@ body {
 .c-title {
 	font-family: 'Bungee', Menlo, Monaco, monospace;
 	font-size: 24px;
-	margin: 12px 15px 10px 15px;
+	margin: 26px 15px 20px 15px;
 	display: flex;
 	justify-content: space-between;
 	color: white;
@@ -25,8 +25,6 @@ body {
 
 .c-title__bonus {
 	text-align: right;
-	color: grey;
-	text-shadow: none;
 	padding: 0 0 0 10px;
 }
 
@@ -43,7 +41,7 @@ body {
 	font-size: 12px;
 	font-weight: "Book";
 	line-height: 1.8;
-	padding: 10px 15px 0 15px;
+	padding: 10px 15px 5px 15px;
 	color: rgba(0,0,0,0.8);
 }
 
