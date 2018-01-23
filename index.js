@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 			pageSize: pageSize,
 			hypercolor: hypercolor(),
 			unfurlTitle: photos[0].title,
-			unfurlImage: `http://superlight.jimwhimpey.com/assets/${encodeURIComponent(photos[0].path + '?w=1000')}`,
+			unfurlImage: `http://superlight.jimwhimpey.com/assets/${encodeURIComponent(photos[0].path)}?w=1000`,
 		});
 	});
 
@@ -41,7 +41,7 @@ app.get('/photo/:timestamp', (req, res) => {
 			photo: JSON.stringify(individualPhoto),
 			hypercolor: hypercolor(),
 			unfurlTitle: individualPhoto.title,
-			unfurlImage: `http://superlight.jimwhimpey.com/assets/${individualPhoto.path}?w=1000`,
+			unfurlImage: `http://superlight.jimwhimpey.com/assets/${encodeURIComponent(individualPhoto.path)}?w=1000`,
 		});
 	});
 });
