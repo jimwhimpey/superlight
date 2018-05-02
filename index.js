@@ -96,7 +96,8 @@ app.get('/feed.json', (req, res) => {
 });
 
 app.get('/assets/:photo', (req, res) => {
-	sharp(path.join(`${__dirname}/assets/${req.params.photo}`))
+	const pathURLUnencoded = req.params.photo.replace(/%21/g, '!').replace(/%3F/g, '?');
+	sharp(path.join(`${__dirname}/assets/${pathURLUnencoded}`))
 		.resize(parseInt(req.query.w, 10))
 		.toBuffer().then(data => res.end(data, 'binary'));
 });

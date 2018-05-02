@@ -24,6 +24,10 @@
 	const widthVirtual = (window.innerWidth > 1000) ? 1000 : window.innerWidth;
 	const widthActual = widthVirtual * Math.min(2, window.devicePixelRatio);
 
+	function urlEncodeQuestionsAndBangs(path) {
+		return path.replace(/!/g, '%21').replace(/\?/g, '%3F');
+	}
+
 	function generatePhotoHTML(photo) {
 
 		if (photo === 'atEnd') return `<div class='c-at_end'>You are at the end</div>`;
@@ -31,7 +35,7 @@
 		return `<li class='c-photos__photo'>
 			<div class='c-photos__placeholder' style='width: ${widthVirtual}px; height: ${widthVirtual/photo.ratio}px;'>
 				<a href='/photo/${photo.date}'>
-					<img src='/assets/${photo.path}?w=${widthActual}' width='${widthVirtual}' height='${widthVirtual/photo.ratio}'>
+					<img src='/assets/${urlEncodeQuestionsAndBangs(photo.path)}?w=${widthActual}' width='${widthVirtual}' height='${widthVirtual/photo.ratio}'>
 				</a>
 			</div>
 			<h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
