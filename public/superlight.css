@@ -16,7 +16,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	color: white;
-	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6), 0 0 5px rgba(0, 0, 0, 0.4);
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 1), -1px -1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .c-title__name {
