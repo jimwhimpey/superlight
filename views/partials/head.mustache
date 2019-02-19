@@ -32,6 +32,12 @@
 
 		if (photo === 'atEnd') return `<div class='c-at_end'>You are at the end</div>`;
 
+		let displayDate = moment(photo.date).fromNow();
+
+		if (moment(photo.date) < moment().subtract(1, 'month')) {
+			displayDate = moment(photo.date).format('Do MMM, YYYY');
+		}
+
 		return `<li class='c-photos__photo'>
 			<div class='c-photos__placeholder' style='width: ${widthVirtual}px; height: ${widthVirtual/photo.ratio}px;'>
 				<a href='/photo/${photo.date}'>
@@ -39,7 +45,7 @@
 				</a>
 			</div>
 			<h3 class='c-photos__title'><a href="/">${photo.title}</a></h3>
-			<p class='c-photos__date'><a href='/photo/${photo.date}'>${moment(photo.date).fromNow()}</a></p>
+			<p class='c-photos__date'><a href='/photo/${photo.date}'>${displayDate}</a></p>
 		</li>`;
 
 	}
