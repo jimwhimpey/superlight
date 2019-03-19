@@ -18,13 +18,15 @@ module.exports = {
 				if (err) reject(err);
 				if (!photos) reject('Empty dir');
 
-				const sortedPhotos = photos.map(photo => ({
+				const sortedPhotos = photos.map(photo => {
+					return {
 						path: photo,
 						title: photo.replace(/\.jpg$/, ''),
 						date: fs.statSync(`./assets/${photo}`).mtime.getTime(),
 						ratio: sizeOf(`./assets/${photo}`).width / sizeOf(`./assets/${photo}`).height,
-					}))
-					.sort(function(a, b) { return b.date - a.date; });
+					};
+				})
+				.sort(function(a, b) { return b.date - a.date; });
 
 				const firstFileIndex = (page == 1) ? 0 : (page - 1) * perPage;
 				const output = [];
