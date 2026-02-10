@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="/superlight.css">
 <link rel="icon" type="image/png" href="/favicon.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content"noindex">
 
 <meta property="og:title" content="Jim Whimpey's Superlight" />
 <meta property="og:description" content="{{{unfurlTitle}}}" />
@@ -22,7 +23,7 @@
 
 	const listNode = document.querySelector('.c-photos');
 	const widthVirtual = (window.innerWidth > 1000) ? 1000 : window.innerWidth;
-	const widthActual = widthVirtual * Math.min(2, window.devicePixelRatio);
+	const widthActual = widthVirtual * Math.max(3, window.devicePixelRatio);
 
 	function urlEncodeQuestionsAndBangs(path) {
 		return path.replace(/!/g, '%21').replace(/\?/g, '%3F');
