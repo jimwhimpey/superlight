@@ -9,10 +9,9 @@
     "image-size": "^0.6.1",
     "mustache-express": "^1.2.5",
     "mustache-express4": "0.0.7",
-    "sharp": "^0.18.4",
+    "sharp": "^0.34.5",
     "supervisor": "^0.12.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "exifdates": "exiftool -r '-DateTimeOriginal>FileModifyDate' assets/"
